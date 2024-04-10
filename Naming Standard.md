@@ -35,10 +35,12 @@ One or more group entries allows grouping or sorting in the GPO Management Conso
 ### **The Type Component**
 Each GPO MUST indicate by Type whether it contains User or Computer settings. A GPO that contains User settings but is bound to an OU with only Computer objects and is used in loopback mode must display the type 'L'. Types 'U', 'C' and 'L' are mutually exclusive.
 
-Correct PROD_U_*
-Correct PROD_C_*
-Incorrect PROD_UC_*
-Incorrect PROD_UL_*
+ Result | Example |
+| --- | --- |
+|:heavy_check_mark: Correct | PROD_U_* |
+|:heavy_check_mark: Correct | PROD_C_* |
+| :x: Incorrect | PROD_UC_* |
+| :x: Incorrect | PROD_UL_* |
 
 The Type 'U' could be more specified with the values 'N','P','T0','T1','T2' and the Type 'C' with the values 'D','S','T0','T1','T2'.
 
@@ -46,7 +48,6 @@ If the GPO uses one of the following filter types that must be indicated with th
 + Security Filtering Domain Group (Apply permission)
 + Delegation of Domain Group (Deny permission)
 + WMI-Filter
-
 
 ### **The Application Component**
 In order to avoid different formulations for the same thing, so-called APPKEYs are predefined. APPKEYs encode names of vendors, applications, products, services or operating systems. The list can be expanded if necessary, but the values MUST then be used exactly as defined. The following table makes some suggestions which could be a starting point.
@@ -85,9 +86,10 @@ In order to avoid different formulations for the same thing, so-called APPKEYs a
 
 If a refinement of the version is required for an application, service or operating system, this can be appended to the APPKEY in round brackets:
 
-:heavy_check_mark: Correct PROD_C_W10(22H2)
-
-:x: Incorrect PROD_C_W10_22H2
+| Result | Example |
+| --- | --- |
+|:heavy_check_mark: Correct | PROD_C_W10(22H2) |
+| :x: Incorrect | PROD_C_W10_22H2 |
 
 ### **The Security Flag Component**
 If a GPO contains security settings, the SECURITY flag MUST be included in the identifier. It is not precisely defined here what security settings are.
@@ -127,7 +129,6 @@ The following table shows the formal definition of the GPO Identifier in the EBN
 
 + PROD_CF_SECURITY_Enable Extended Protection for Authentication
    
-
 
 ## Contributing
 All Administrators which using GPOs in their environment are very welcome to help and make the best practices better, more useful or contribute new ideas.
