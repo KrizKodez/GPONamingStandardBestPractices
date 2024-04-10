@@ -1,15 +1,5 @@
-# GPO Naming Standard And Best Practices
+# GPO Naming Standard
 Definition of a naming standard for Active Directory Group Policy Objects.
-
-## Motivation
-The famous quote by Phil Karlton
-
-> There are only two hard things in computer science: cache invalidation and naming things.
-
-trifft einen teil der Realität sehr gut, vor allen dingen die sinnvolle bezeichnung von IT-Assets ist von besonderer Bedeutung macht es doch inhalte, eigenschaften, verantwortlichkeit oder abhängigkeiten leichter zu erkennen. der folgende text macht daher den versuch einen sinnvollen standard für die bezeichnung von GPOs zu entwickeln
-
-## For Your Information.
-The following text uses capitalized key words according to the Best Current Practice 14/RFC2119 (https://www.rfc-editor.org/rfc/rfc2119)
 
 ## The Rules
 Each identifier of a GPO is made up of different components that MUST be separated by exactly one SEPERATOR character. The following table lists all components with their properties in the order in which they appear in the GPO identifier:
@@ -35,21 +25,108 @@ Each identifier of a GPO is made up of different components that MUST be separat
 | Version | %Versionnumber% | Optional | The current Version of the GPO |
 
 ### **Comments**
-(1) The permitted values are literals except the items enclosed in %%, which have to be replaced through valid values. For details what is allowed inside %% please see the EBNF later in this document.
+(1) The permitted values are literals except the items enclosed in %%, which have to be replaced through valid values. For details what is allowed inside %% please see the EBNF section below in this document.
 
-(2) Although the Application, Security Flag, Baseline Flag and Function types are all specified as optional, the standard requires that the GPO identifier MUST contain at least one of these types. For 
+(2) Although the Application, Security Flag, Baseline Flag and Function types are all specified as optional, the standard requires that the GPO identifier MUST contain at least one of these types.
 
 ### **The Group Component**
-One or more group entries allows grouping or sorting in the GPO Management Console. It could be grouped by status (productive or test), responsible team, location or other criteria. The grouping can also be used to control effects of various kinds, such as on backup, permissions, monitoring or inventory of the GPO.
+One or more group entries allows grouping or sorting in the GPO Management Console. It could be grouped by status (productive or test), responsible team, location or other criteria. The grouping can also be used to control effects of various kinds, such as on backup, permissions, monitoring or inventory of the GPO. In the following examples we use PROD and TEST as group definitions.
 
 ### **The Type Component**
+Each GPO MUST indicate by Type whether it contains User or Computer settings. A GPO that contains User settings but is bound to an OU with only Computer objects and is used in loopback mode must display the type 'L'. Types 'U', 'C' and 'L' are mutually exclusive.
 
+Correct PROD_U_*
+Correct PROD_C_*
+Incorrect PROD_UC_*
+Incorrect PROD_UL_*
+
+The Type 'U' could be more specified with the values 'N','P','T0','T1','T2' and the Type 'C' with the values 'D','S','T0','T1','T2'.
+
+If the GPO uses one of the following filter types that must be indicated with the 'F' value:
++ Security Filtering Domain Group (Apply permission)
++ Delegation of Domain Group (Deny permission)
++ WMI-Filter
 
 
 ### **The Application Component**
-In order to avoid different formulations for the same thing, so-called APPKEYs are predefined. APPKEYs encode names of applications, products, services or operating systems. The list can be expanded if necessary, but the values MUST then be used exactly as defined. The following table makes some suggestions which could be a starting point.
+In order to avoid different formulations for the same thing, so-called APPKEYs are predefined. APPKEYs encode names of vendors, applications, products, services or operating systems. The list can be expanded if necessary, but the values MUST then be used exactly as defined. The following table makes some suggestions which could be a starting point.
 
 **The standard does not require the use of the APPKEYS specified here but rather that APPKEYS be defined and used.**
+
+| APPKEY | Type | Represent |
+| --- | --- | --- |
+| ADFS | Service | Microsoft Federation Service |
+| Azure | Service | Users or Computers used by Azure |
+| Chrome | Application |Google Chrome Browser |
+| Citrix | Product | Citrix products |
+| DSM | Application | Ivanti DSM |
+| Edge | Application | Edge Chromium Browser |
+| File | Service | File Service |
+| Firefox | Application | Mozilla Firefox Browser |
+| LAPS | Application | Microsoft Local Administrator Password Solution |
+| M365 | Application | Microsoft M365 |
+| MDM | Application | Mobile Device Management |
+| MSO2016 | Application | Microsoft Office 2016 |
+| MSO2019 | Application | Microsoft Office 2019 |
+| MSO2021 | Application | Microsoft Office 2021 |
+| MSSQL | Service | Microsoft SQL Server |
+| Notes | Application | IBM Notes |
+| PKI | Service | PKI Service |
+| Printing | Service | Print Service |
+| W10 | OS | Microsoft Windows 10 |
+| W11 | OS | Microsoft Windows 11 |
+| W2012 | OS | Microsoft Windows Server 2012 |
+| W2016 | OS | Microsoft Windows Server 2016 |
+| W2019 | OS | Microsoft Windows Server 2019 |
+| W2022 | OS | Microsoft Windows Server 2022 |
+| W2025 | OS | Microsoft Windows Server 2025 |
+| WSUS | Service | Microsoft Windows Update Service |
+| XenApp | Application | Citrix XenApp |
+
+If a refinement of the version is required for an application, service or operating system, this can be appended to the APPKEY in round brackets:
+
+:heavy_check_mark: Correct PROD_C_W10(22H2)
+
+:x: Incorrect PROD_C_W10_22H2
+
+### **The Security Flag Component**
+If a GPO contains security settings, the SECURITY flag MUST be included in the identifier. It is not precisely defined here what security settings are.
+
+### **The Baseline Flag Component**
+A GPO that has the greatest possible reach or is valid for a large number of users or computers logically contains a basic configuration and MUST therefore contain the BASELINE flag. The SECURITY and BASELINE flags can be combined to indicate that the GPO contains security settings with the widest possible scope.
+
+### **The Version Component**
+The version is optional and could match the version assigned by the management console.
+
+### **The Backus-Nauer-Form**
+The following table shows the formal definition of the GPO Identifier in the EBNF form:
+
+| Non-Terminal | Production Rule |
+| --- | --- |
+| LETTER | "a" \| "b" \| "c" \| "d" \| "e" \| "f" \| "g" \| "i" \| "j" \| "k" \| "l" \| "m" \| "n" \| "o" \| "p" \| "q" \| "r" \| "s" \| "t" \| "u" \| "v" \| "w" \| "x" \| "y" \| "z" |
+| CAPLETTER | "A" \| "B" \| "C" \| "D" \| "E" \| "F" \|"G" \| "I" \| "J" \| "K" \| "L" \| "M" \| "N" \| "O" \| "P" \| "Q" \| "R" \| "S" \| "T" \| "U" \| "V" \| "W" \| "X" \| "Y" \| "Z" |
+| DIGIT | "0" \| "1" \| "2" \| "3" \| "4" \| "5" \| "6" \| "7" \| "8" \| "9" |
+| SPACE | " " |
+| SEPARATOR | "_" |
+| GROUP | CAPLETTER, [{CAPLETTER \| SPACE \| DIGIT}(CAPLETTER \| DIGIT)], SEPARATOR |
+| TIER | "T", ("0" \| "1" \| "2") |
+| TYPE | ("U", ["N" \| "P" \| TIER] \| "C", ["D" \| "S" \| TIER] \| "L"), ["F"] |
+| APPKEY | CAPLETTER, {CAPLETTER | LETTER | DIGIT} |
+| APPVERSION | "(" ,DIGIT, {DIGIT \| "." \| CAPLETTER}, ")" |
+| APP | SEPARATOR, APPKEY, [APPVERSION]
+| SECURITYFLAG | SEPARATOR, "SECURITY" |
+| BASELINEFLAG | SEPARATOR, "BASELINE" |
+| FUNCTION | SEPARATOR, CAPLETTER, {CAPLETTER \| LETTER \| SPACE \| DIGIT} |
+| VERSION | SEPARATOR, "V", DIGIT, {DIGIT} |
+| IDENTIFIER | {GROUP}, TYPE, {APP}, [SECURITYFLAG], [BASELINEFLAG], [FUNCTION], [VERSION] |
+
+### **Examples**
++ PROD_U_W2022(22H2)_SECURITY_BASELINE
+
++ TEST_CT2_MSO2019_BASELINE_V10
+
++ PROD_CF_SECURITY_Enable Extended Protection for Authentication
+   
 
 
 ## Contributing
