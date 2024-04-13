@@ -22,15 +22,17 @@ Each identifier of a GPO is made up of different components that MUST be separat
 | Security Flag | SECURITY | Optional | Highlights that the GPO contains security settings |
 | Baseline Flag | BASELINE | Optional | Highlights that the GPO contains the baseline of settings |
 | Function | %Text% | Optional | Describes the settings of the GPO in a meaningful way |
-| Version | %Versionnumber% | Optional | The current Version of the GPO |
+| Version | %Version% | Optional | The current Version of the GPO |
 
 ### **Comments**
-(1) The permitted values are literals except the items enclosed in %%, which have to be replaced through valid values. For details what is allowed inside %% please see the EBNF section below in this document.
+(1) The permitted values are literals except the items enclosed in %%, which have to be replaced through valid values. For details what is allowed inside %% please see the [EBNF](#EBNF) section below in this document.
 
 (2) Although the Application, Security Flag, Baseline Flag and Function types are all specified as optional, the standard requires that the GPO identifier MUST contain at least one of these types.
 
 ### **The Group Component**
 One or more group entries allows grouping or sorting in the GPO Management Console. It could be grouped by status (productive or test), responsible team, location or other criteria. The grouping can also be used to control effects of various kinds, such as on backup, permissions, monitoring or inventory of the GPO. In the following examples we use PROD and TEST as group definitions.
+
+:heavy_check_mark: The Group identifier may only consist of uppercase letters, numbers and the space and must begin with a capital letter.
 
 ### **The Type Component**
 Each GPO MUST indicate by Type whether it contains User or Computer settings. A GPO that contains User settings but is bound to an OU with only Computer objects and is used in loopback mode must display the type 'L'. Types 'U', 'C' and 'L' are mutually exclusive.
@@ -39,10 +41,11 @@ Each GPO MUST indicate by Type whether it contains User or Computer settings. A 
 | --- | --- |
 |:heavy_check_mark: Correct | PROD_U_* |
 |:heavy_check_mark: Correct | PROD_C_* |
+|:heavy_check_mark: Correct | PROD_L_* |
 | :x: Incorrect | PROD_UC_* |
 | :x: Incorrect | PROD_UL_* |
 
-The Type 'U' could be more specified with the values 'N','P','T0','T1','T2' and the Type 'C' with the values 'D','S','T0','T1','T2'.
+The Type 'U' could be more specified with the values 'N', 'P', 'T0', 'T1', 'T2' and the Type 'C' with the values 'D', 'S', 'T0', 'T1', 'T2'.
 
 If the GPO uses one of the following filter types that must be indicated with the 'F' value:
 + Security Filtering Domain Group (Apply permission)
@@ -84,6 +87,8 @@ In order to avoid different formulations for the same thing, so-called APPKEYs a
 | WSUS | Service | Microsoft Windows Update Service |
 | XenApp | Application | Citrix XenApp |
 
+:heavy_check_mark: The APPKEY may only consist of uppercase letters, lowercase letters and numbers and must begin with a uppercase letter.
+
 If a refinement of the version is required for an application, service or operating system, this can be appended to the APPKEY in round brackets:
 
 | Result | Example |
@@ -100,7 +105,7 @@ A GPO that has the greatest possible reach or is valid for a large number of use
 ### **The Version Component**
 The version is optional and could match the version assigned by the management console.
 
-### **The Backus-Nauer-Form**
+### **The Backus-Nauer-Form**<a name="EBNF"></a>
 The following table shows the formal definition of the GPO Identifier in the EBNF form:
 
 | Non-Terminal | Production Rule |
@@ -113,14 +118,19 @@ The following table shows the formal definition of the GPO Identifier in the EBN
 | GROUP | CAPLETTER, [{CAPLETTER \| SPACE \| DIGIT}(CAPLETTER \| DIGIT)], SEPARATOR |
 | TIER | "T", ("0" \| "1" \| "2") |
 | TYPE | ("U", ["N" \| "P" \| TIER] \| "C", ["D" \| "S" \| TIER] \| "L"), ["F"] |
-| APPKEY | CAPLETTER, {CAPLETTER | LETTER | DIGIT} |
+| APPKEY | CAPLETTER, {CAPLETTER \| LETTER \| DIGIT} |
 | APPVERSION | "(" ,DIGIT, {DIGIT \| "." \| CAPLETTER}, ")" |
 | APP | SEPARATOR, APPKEY, [APPVERSION]
 | SECURITYFLAG | SEPARATOR, "SECURITY" |
 | BASELINEFLAG | SEPARATOR, "BASELINE" |
 | FUNCTION | SEPARATOR, CAPLETTER, {CAPLETTER \| LETTER \| SPACE \| DIGIT} |
 | VERSION | SEPARATOR, "V", DIGIT, {DIGIT} |
-| IDENTIFIER | {GROUP}, TYPE, {APP}, [SECURITYFLAG], [BASELINEFLAG], [FUNCTION], [VERSION] |
+| BASEID | BASELINEFLAG, [FUNCTION] |
+| SECID | SECURITYFLAG, [BASEID] |
+| APPID | APP, [SECID] |
+| IDENTIFIER | {GROUP}, TYPE, (APPID \| SECID \| BASEID \| FUNCTION), [VERSION] |
+
+The formal definition of the GPO IDENTIFIER seems a bit complicated but, to put it simply, it says that the name of a GPO MUST consist of at least one TYPE and either an APPKEY, the SECURITYFLAG, BASELINEFLAG or the FUNCTION.
 
 ### **Examples**
 + PROD_U_W2022(22H2)_SECURITY_BASELINE
