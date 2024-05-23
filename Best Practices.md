@@ -2,7 +2,7 @@
 Collection of rules for the creation and the handling of Active Directory Group Policy Objects.
 
 ## Motivation
-Even in the age of Cloud Computing, GPOs are an essential component for the configuration management and security management of on-premises Active Directory domains. The creation and management of GPOs gives the administrator many options to achieve the desired goal, which is why it is particularly important that there are rules for the creation and usage of GPOs. The GPO technology has many functions such as inheritance, blocking, ACLs, Group or WMI filters that allow you to quickly create an environment that is no longer maintainable or difficult to find errors. The saying applies here again: less is more.
+Even in the age of Cloud Computing, GPOs are an essential component for the configuration management and security management of on-premises Active Directory domains. The creation and management of GPOs gives the administrator many options to achieve the desired goal, which is why it is particularly important that there are rules for the creation and usage of GPOs. The GPO technology has many functions such as Inheritance, Blocking, ACLs, Group or WMI filters that allow you to quickly create an environment that is no longer maintainable or difficult to find errors. The saying applies here again: less is more.
 
 ## The Rules
 The best practices here are collected in six categories:
@@ -45,7 +45,7 @@ The best practices here are collected in six categories:
 | | Test | Optional ||
     (M3) Production GPOs that include security settings must have the Owner, ReviewPeriod and LastReviewDate tags to schedule a security review.
 
-:exclamation: If an attribute Tag is not used, the tag should have the value **NA**.   
+:exclamation: If an attribute Tag is not used, the Tag should have the value **NA**.   
 :exclamation: The attribute Tags ReviewPeriod and LastReviewDate must appear together.
 
 ### (T) Test-Rules
@@ -87,7 +87,7 @@ The best practices here are collected in six categories:
     (G1) All settings of all GPOs SHOULD be documented.
     (G2) All settings of all GPOs SHOULD be available as an XML report (the XML report contains the links of the GPO, which is important in the event of a restore).
     (G3) GPOs SHOULD be backed up separately from the normal system backup, e.g. via PowerShell, ideally in several versions to enable simplified recovery directly via the Group Policy Management Console.
-    (G4) The metadata tags ReviewPeriod and LastReviewDate MUST be monitored to ensure a timely review.
+    (G4) The metadata Tags ReviewPeriod and LastReviewDate MUST be monitored to ensure a timely review.
 
 ## Contributing
 All Administrators which using GPOs in their environment are very welcome to help and make the good practices better, more useful or contribute new ideas.
