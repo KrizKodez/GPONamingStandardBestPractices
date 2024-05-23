@@ -45,9 +45,8 @@ The best practices here are collected in six categories:
 | | Test | Optional ||
     (M3) Production GPOs that include security settings must have the Owner, ReviewPeriod and LastReviewDate tags to schedule a security review.
 
-:exclamation: If an attribute tag is not used, the tag should have the value **NA**.
-
-:exclamation: The attribute tags ReviewPeriod and LastReviewDate must appear together.
+:exclamation: If an attribute Tag is not used, the tag should have the value **NA**.
+:exclamation: The attribute Tags ReviewPeriod and LastReviewDate must appear together.
 
 ### (T) Test-Rules
     (T1) Changing productive or creating new GPOs MUST follow a defined test procedure.
