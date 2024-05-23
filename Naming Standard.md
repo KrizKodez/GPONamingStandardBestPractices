@@ -1,6 +1,13 @@
 # GPO Naming Standard
 Definition of a naming standard for Active Directory Group Policy Objects.
 
+## Motivation
+The famous quote by Phil Karlton
+
+> There are only two hard things in computer science: cache invalidation and naming things.
+
+reflects a part of the reality very well, above all the meaningful designation of IT assets is of particular importance, making it easier to recognize contents, properties, responsibilities or dependencies. The following text therefore attempts to provide a reasonable standard for the naming of GPOs.
+
 ## The Rules
 Each identifier of a GPO is made up of different components that MUST be separated by exactly one SEPERATOR character. The following table lists all components with their properties in the order in which they appear in the GPO identifier:
 
@@ -141,7 +148,7 @@ The formal definition of the GPO IDENTIFIER seems a bit complicated but, to put 
    
 
 ## Contributing
-All Administrators which using GPOs in their environment are very welcome to help and make the best practices better, more useful or contribute new ideas.
+All Administrators which using GPOs in their environment are very welcome to help and make the naming standard better, more useful or contribute new ideas.
 
 
 ## License
