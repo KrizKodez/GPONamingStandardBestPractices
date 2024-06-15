@@ -15,20 +15,21 @@ The best practices here are collected in six categories:
 + General
 
 ### Definition
-    A GPO Setting is the triple consisting of (GPO Path, GPO Name, GPO Value).
+A GPO Setting is the triple consisting of (GPO Path, GPO Name, GPO Value). Two GPOs are differnet if at least one of its components is different.
 
 ### (N) Name-Rules
-    (N1) GPO names MUST follow a naming convention.
-    (N2) Microsoft GPOs SHALL NOT be renamed.
-    (N3) GPO names and descriptions must be written in English.
-    (N4) The GPO SHOULD have a descriptive name.
-    (N5) If a GPO makes a functional or individual setting, the name of the GPO SHOULD indicate whether something is enabled/disabled or allowed/disallowed using that GPO. In this case, the words Enable(d)/Disable(d) or Allow(ed)/Disallow(ed) SHOULD be used in GPO names.
-    (N6) A GPO with security settings MUST have the SECURITY flag in its name.
-    (N7) A GPO with basic settings MUST have the BASELINE flag in its name.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N1) GPO names MUST follow a naming convention.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N2) Microsoft GPOs SHALL NOT be renamed.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N3) GPO names and descriptions must be written in English.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N4) The GPO SHOULD have a descriptive name.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N5) If a GPO makes a functional or individual setting, the name of the GPO SHOULD indicate whether something is enabled/disabled or allowed/disallowed using that GPO.     
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this case, the words Enable(d)/Disable(d) or Allow(ed)/Disallow(ed) SHOULD be used in GPO names.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N6) A GPO with security settings MUST have the SECURITY flag in its name.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N7) A GPO with basic settings MUST have the BASELINE flag in its name.
     
 ### (M) Metadata-Rules
-    (M1) Each GPO used in production MUST contain a description that adequately describes the purpose of it. For this purpose we use the GPO Comment field.
-    (M2) The description SHOULD contain the following attributes:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(M1) Each GPO used in production MUST contain a description that adequately describes the purpose of it. For this purpose we use the GPO Comment field.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(M2) The description SHOULD contain the following attributes:
 | Tag | Environment | Usage | Description |
 | ---- | ---- | ---- | ---- |
 | Description | Production | Mandatory | Short and understandable description of the purpose of the GPO |
@@ -56,38 +57,39 @@ The best practices here are collected in six categories:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(T5) GPOs that are used in production MAY be linked to the Test-OU or a Sub-OU thereof.      
 
 ### (H) Handling-Rules
-    (H1) Microsoft GPOs MUST remain unchanged.    
-    (H2) GPOs SHOULD NOT be linked to the Domain-Root.
-    (H3) GPO Inheritance should be preferred to GPO Linking.
-    (H4) A GPO SHALL NOT define settings for Users and Computers.
-    (H5) GPO with User settings MUST be linked to a OU which MUST ONLY contain User objects.
-    (H6) GPO with Computer settings MUST be linked to a OU which MUST ONLY contain Computer objects.
-    (H7) GPO with User settings SHOULD only be linked to a OU that contains Computer objects if the loopback mode is enabled for these Computers.
-    (H8) Permanently disabled GPOs MUST be removed.
-    (H9) Permanently unlinked GPOs MUST be removed.
-    (H10) Inheritance blocking SHOULD be avoided, lots of blocking could be an indication of an unfavorable OU structure.
-    (H10) WMI filters SHOULD be avoided, many WMI filters could be an indication of an unfavorable OU structure.
-    (H11) If GPOs are deleted, any associated security filtering groups and WMI filters MUST also be removed if they were used exclusively by the removed GPO.
-    (H12) Security Filtering Groups MUST be dedicated to the usage with the GPO.
-    (H13) Multiple GPOs MUST NOT share a Security Filtering Group.
-    (H14) A Security Filtering Group MUST contain at least the name of the GPO and a suffix APPLY or DENY.
-    (H15) If a GPO has been renamed the Security Filtering Group MUST be renamed too.
-    (H16) A GPO with security settings MUST be reviewed by the owner after the review period has expired to ensure the settings are still current and effective.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(H1) Microsoft GPOs MUST remain unchanged.    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(H2) GPOs SHOULD NOT be linked to the Domain-Root.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(H3) GPO Inheritance should be preferred to GPO Linking.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(H4) A GPO SHALL NOT define settings for Users and Computers.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(H5) GPO with User settings MUST be linked to a OU which MUST ONLY contain User objects.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(H6) GPO with Computer settings MUST be linked to a OU which MUST ONLY contain Computer objects.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(H7) GPO with User settings SHOULD only be linked to a OU that contains Computer objects if the loopback mode is enabled for these Computers.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(H8) A GPO may only be temporarily deactivated for troubleshooting
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(H9) Permanently disabled GPOs MUST be removed.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(H10) Permanently unlinked GPOs MUST be removed.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(H11) Inheritance blocking SHOULD be avoided, lots of blocking could be an indication of an unfavorable OU structure.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(H12) WMI filters SHOULD be avoided, many WMI filters could be an indication of an unfavorable OU structure.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(H13) If GPOs are deleted, any associated security filtering groups and WMI filters MUST also be removed if they were used exclusively by the removed GPO.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(H14) Security Filtering Groups MUST be dedicated to the usage with the GPO.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(H15) Multiple GPOs MUST NOT share a Security Filtering Group.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(H16) A Security Filtering Group MUST contain at least the name of the GPO and a suffix APPLY or DENY.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(H17) If a GPO has been renamed the Security Filtering Group MUST be renamed too.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(H18) A GPO with security settings MUST be reviewed by the owner after the review period has expired to ensure the settings are still current and effective.
 
 ### (C) Composition-Rules
-    (C1) A GPO contains either a User or a Computer node, the complementary node MUST be disabled.
-    (C2) Settings that serve security MUST be stored in independent GPOs and separated from other settings.
-    (C3) A GPO SHALL NOT contain settings from different applications.
-    (C4) A GPO for a specific application MUST have an APPKEY in its name.
-    (C5) All GPOs MUST contain disjoint sets of settings.
-    (C6) If a value "Disabled" or "Not Configured" has the same effect as "Enabled" with an additional value then "Not Configured" should be preferred.
-    (C7) If a value "Enabled" is the same as "Not Configured" or "Disabled" is the same as "Not Configured", then this setting SHOULD only be explicitly configured if this setting is to be overridden in another GPO.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C1) A GPO contains either a User or a Computer node, the complementary node MUST be disabled.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C2) Settings that serve security MUST be stored in independent GPOs and separated from other settings.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C3) A GPO SHALL NOT contain settings from different applications.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C4) A GPO for a specific application MUST have an APPKEY in its name.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C5) All GPOs MUST contain disjoint sets of settings.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C6) If a value "Disabled" or "Not Configured" has the same effect as "Enabled" with an additional value then "Not Configured" should be preferred.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C7) If a value "Enabled" is the same as "Not Configured" or "Disabled" is the same as "Not Configured", then this setting SHOULD only be explicitly configured if this setting is to be overridden in another GPO.
 
 ### (G) General-Rules
-    (G1) All settings of all GPOs SHOULD be documented.
-    (G2) All settings of all GPOs SHOULD be available as an XML report (the XML report contains the links of the GPO, which is important in the event of a restore).
-    (G3) GPOs SHOULD be backed up separately from the normal system backup, e.g. via PowerShell, ideally in several versions to enable simplified recovery directly via the Group Policy Management Console.
-    (G4) The metadata Tags ReviewPeriod and LastReviewDate MUST be monitored to ensure a timely review.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(G1) All settings of all GPOs SHOULD be documented.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(G2) All settings of all GPOs SHOULD be available as an XML report (the XML report contains the links of the GPO, which is important in the event of a restore).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(G3) GPOs SHOULD be backed up separately from the normal system backup, e.g. via PowerShell, ideally in several versions to enable simplified recovery directly via the Group Policy Management Console.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(G4) The metadata Tags ReviewPeriod and LastReviewDate MUST be monitored to ensure a timely review.
 
 ## Contributing
 All Administrators which using GPOs in their environment are very welcome to help and make the good practices better, more useful or contribute new ideas.
