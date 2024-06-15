@@ -44,11 +44,11 @@ A GPO Setting is the triple consisting of (GPO Path, GPO Name, GPO Value). Two G
 | | Test | Mandatory ||
 | ChangeID | Production | Mandatory | ID of a Change-, ISMS- or any other ticket system.|
 | | Test | Optional ||
-    
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(M3) Production GPOs that include security settings must have the Owner, ReviewPeriod and LastReviewDate tags to schedule a security review.
 
 :exclamation: If an attribute Tag is not used, the Tag should have the value **NA**.   
 :exclamation: The attribute Tags ReviewPeriod and LastReviewDate must appear together.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(M3) Production GPOs that include security settings must have the Owner, ReviewPeriod and LastReviewDate Tags to schedule a security review.
 
 ### (T) Test-Rules
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(T1) Changing productive or creating new GPOs MUST follow a defined test procedure.     

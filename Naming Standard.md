@@ -9,7 +9,7 @@ The famous quote by Phil Karlton
 reflects a part of the reality very well, above all the meaningful designation of IT assets is of particular importance, making it easier to recognize contents, properties, responsibilities or dependencies. The following text therefore attempts to provide a reasonable standard for the naming of GPOs.
 
 ## The Rules
-Each identifier of a GPO is made up of different components that MUST be separated by exactly one SEPERATOR character. The following table lists all components with their properties in the order in which they appear in the GPO identifier:
+Each identifier of a GPO is made up of different components that MUST be separated by exactly one SEPARATOR character. The following table lists all components with their properties in the order in which they appear in the GPO identifier:
 
 | Component | Permitted Value | Usage | Description |
 | --------- | --------------- | ----- | ----------- |
