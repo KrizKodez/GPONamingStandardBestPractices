@@ -15,14 +15,14 @@ The best practices here are collected in six categories:
 + General
 
 ### Definition
-A GPO Setting is the triple consisting of (GPO Path, GPO Name, GPO Value). Two GPOs are differnet if at least one of its components is different.
+A GPO Setting is the triple consisting of (GPO Path, GPO Name, GPO Value). Two GPOs are different if at least one of its components is different.
 
 ### (N) Name-Rules
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N1) GPO names MUST follow a naming convention.    
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N2) Microsoft GPOs SHALL NOT be renamed.     
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N3) GPO names and descriptions must be written in English.     
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N4) The GPO SHOULD have a descriptive name.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N5) If a GPO makes a functional or individual setting, the name of the GPO SHOULD indicate whether something is enabled/disabled or allowed/disallowed using that GPO.     
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N4) The GPO SHOULD have a descriptive name.      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N5) If a GPO makes a functional or individual setting, the name of the GPO &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOULD indicate whether something is enabled/disabled or allowed/disallowed using that GPO.     
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this case, the words Enable(d)/Disable(d) or Allow(ed)/Disallow(ed) SHOULD be used in GPO names.      
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N6) A GPO with security settings MUST have the SECURITY flag in its name.     
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N7) A GPO with basic settings MUST have the BASELINE flag in its name.     
@@ -44,7 +44,7 @@ A GPO Setting is the triple consisting of (GPO Path, GPO Name, GPO Value). Two G
 | | Test | Mandatory ||
 | ChangeID | Production | Mandatory | ID of a Change-, ISMS- or any other ticket system.|
 | | Test | Optional ||
-    (M3) Production GPOs that include security settings must have the Owner, ReviewPeriod and LastReviewDate tags to schedule a security review.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(M3) Production GPOs that include security settings must have the Owner, ReviewPeriod and LastReviewDate tags to schedule a security review.
 
 :exclamation: If an attribute Tag is not used, the Tag should have the value **NA**.   
 :exclamation: The attribute Tags ReviewPeriod and LastReviewDate must appear together.
@@ -77,18 +77,18 @@ A GPO Setting is the triple consisting of (GPO Path, GPO Name, GPO Value). Two G
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(H18) A GPO with security settings MUST be reviewed by the owner after the review period has expired to ensure the settings are still current and effective.      
 
 ### (C) Composition-Rules
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C1) A GPO contains either a User or a Computer node, the complementary node MUST be disabled.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C2) Settings that serve security MUST be stored in independent GPOs and separated from other settings.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C3) A GPO SHALL NOT contain settings from different applications.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C4) A GPO for a specific application MUST have an APPKEY in its name.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C5) All GPOs MUST contain disjoint sets of settings.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C6) If a value "Disabled" or "Not Configured" has the same effect as "Enabled" with an additional value then "Not Configured" should be preferred.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C1) A GPO contains either a User or a Computer node, the complementary node MUST be disabled.     
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C2) Settings that serve security MUST be stored in independent GPOs and separated from other settings.     
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C3) A GPO SHALL NOT contain settings from different applications.      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C4) A GPO for a specific application MUST have an APPKEY in its name.      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C5) All GPOs MUST contain disjoint sets of settings.      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C6) If a value "Disabled" or "Not Configured" has the same effect as "Enabled" with an additional value then "Not Configured" should be preferred.      
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(C7) If a value "Enabled" is the same as "Not Configured" or "Disabled" is the same as "Not Configured", then this setting SHOULD only be explicitly configured if this setting is to be overridden in another GPO.
 
 ### (G) General-Rules
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(G1) All settings of all GPOs SHOULD be documented.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(G2) All settings of all GPOs SHOULD be available as an XML report (the XML report contains the links of the GPO, which is important in the event of a restore).
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(G3) GPOs SHOULD be backed up separately from the normal system backup, e.g. via PowerShell, ideally in several versions to enable simplified recovery directly via the Group Policy Management Console.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(G1) All settings of all GPOs SHOULD be documented.      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(G2) All settings of all GPOs SHOULD be available as an XML report (the XML report contains the links of the GPO, which is important in the event of a restore).      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(G3) GPOs SHOULD be backed up separately from the normal system backup, e.g. via PowerShell, ideally in several versions to enable simplified recovery directly via the Group Policy Management Console.      
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(G4) The metadata Tags ReviewPeriod and LastReviewDate MUST be monitored to ensure a timely review.
 
 ## Contributing
