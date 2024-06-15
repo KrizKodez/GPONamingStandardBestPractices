@@ -49,14 +49,14 @@ The best practices here are collected in six categories:
 :exclamation: The attribute Tags ReviewPeriod and LastReviewDate must appear together.
 
 ### (T) Test-Rules
-    (T1) Changing productive or creating new GPOs MUST follow a defined test procedure.
-    (T2) If there is no independent test environment, GPO tests SHOULD be carried out in a special Test-OU with a dedicated domain account that is only allowed to link GPOs to the Test-OU.
-    (T3) A GPO that is being tested MUST make this clear in the name.
-    (T4) A GPO that is being tested MUST NOT be linked to a productive OU.
-    (T5) GPOs that are used in production MAY be linked to the Test-OU or a Sub-OU thereof.
+(T1) Changing productive or creating new GPOs MUST follow a defined test procedure.      
+(T2) If there is no independent test environment, GPO tests SHOULD be carried out in a special Test-OU with a dedicated domain account that is only allowed to link GPOs to the Test-OU.     
+(T3) A GPO that is being tested MUST make this clear in the name.     
+(T4) A GPO that is being tested MUST NOT be linked to a productive OU.      
+(T5) GPOs that are used in production MAY be linked to the Test-OU or a Sub-OU thereof.      
 
 ### (H) Handling-Rules
-    (H1) Microsoft GPOs MUST remain unchanged.
+    (H1) Microsoft GPOs MUST remain unchanged.    
     (H2) GPOs SHOULD NOT be linked to the Domain-Root.
     (H3) GPO Inheritance should be preferred to GPO Linking.
     (H4) A GPO SHALL NOT define settings for Users and Computers.
@@ -65,7 +65,7 @@ The best practices here are collected in six categories:
     (H7) GPO with User settings SHOULD only be linked to a OU that contains Computer objects if the loopback mode is enabled for these Computers.
     (H8) Permanently disabled GPOs MUST be removed.
     (H9) Permanently unlinked GPOs MUST be removed.
-    (H10) Inheritance bocking SHOULD be avoided, lots of blocking could be an indication of an unfavorable OU structure.
+    (H10) Inheritance blocking SHOULD be avoided, lots of blocking could be an indication of an unfavorable OU structure.
     (H10) WMI filters SHOULD be avoided, many WMI filters could be an indication of an unfavorable OU structure.
     (H11) If GPOs are deleted, any associated security filtering groups and WMI filters MUST also be removed if they were used exclusively by the removed GPO.
     (H12) Security Filtering Groups MUST be dedicated to the usage with the GPO.
