@@ -49,11 +49,11 @@ The best practices here are collected in six categories:
 :exclamation: The attribute Tags ReviewPeriod and LastReviewDate must appear together.
 
 ### (T) Test-Rules
-(T1) Changing productive or creating new GPOs MUST follow a defined test procedure.      
-(T2) If there is no independent test environment, GPO tests SHOULD be carried out in a special Test-OU with a dedicated domain account that is only allowed to link GPOs to the Test-OU.     
-(T3) A GPO that is being tested MUST make this clear in the name.     
-(T4) A GPO that is being tested MUST NOT be linked to a productive OU.      
-(T5) GPOs that are used in production MAY be linked to the Test-OU or a Sub-OU thereof.      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(T1) Changing productive or creating new GPOs MUST follow a defined test procedure.      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(T2) If there is no independent test environment, GPO tests SHOULD be carried out in a special Test-OU with a dedicated domain account that is only allowed to link GPOs to the Test-OU.     
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(T3) A GPO that is being tested MUST make this clear in the name.     
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(T4) A GPO that is being tested MUST NOT be linked to a productive OU.      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(T5) GPOs that are used in production MAY be linked to the Test-OU or a Sub-OU thereof.      
 
 ### (H) Handling-Rules
     (H1) Microsoft GPOs MUST remain unchanged.    
