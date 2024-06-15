@@ -43,7 +43,8 @@ A GPO Setting is the triple consisting of (GPO Path, GPO Name, GPO Value). Two G
 | LastChangedBy | Production | Mandatory | Author who made the last change (Type: Mail \| Account \| Fullname).|
 | | Test | Mandatory ||
 | ChangeID | Production | Mandatory | ID of a Change-, ISMS- or any other ticket system.|
-| | Test | Optional ||     
+| | Test | Optional ||
+    
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(M3) Production GPOs that include security settings must have the Owner, ReviewPeriod and LastReviewDate tags to schedule a security review.
 
 :exclamation: If an attribute Tag is not used, the Tag should have the value **NA**.   
