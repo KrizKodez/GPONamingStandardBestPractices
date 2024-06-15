@@ -22,7 +22,7 @@ A GPO Setting is the triple consisting of (GPO Path, GPO Name, GPO Value). Two G
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N2) Microsoft GPOs SHALL NOT be renamed.     
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N3) GPO names and descriptions must be written in English.     
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N4) The GPO SHOULD have a descriptive name.      
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N5) If a GPO makes a functional or individual setting, the name of the GPO &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOULD indicate whether something is enabled/disabled or allowed/disallowed using that GPO.     
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N5) If a GPO makes a functional or individual setting, the name of the GPO SHOULD indicate whether something is enabled/disabled or allowed/disallowed using that GPO.     
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this case, the words Enable(d)/Disable(d) or Allow(ed)/Disallow(ed) SHOULD be used in GPO names.      
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N6) A GPO with security settings MUST have the SECURITY flag in its name.     
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(N7) A GPO with basic settings MUST have the BASELINE flag in its name.     
@@ -43,7 +43,7 @@ A GPO Setting is the triple consisting of (GPO Path, GPO Name, GPO Value). Two G
 | LastChangedBy | Production | Mandatory | Author who made the last change (Type: Mail \| Account \| Fullname).|
 | | Test | Mandatory ||
 | ChangeID | Production | Mandatory | ID of a Change-, ISMS- or any other ticket system.|
-| | Test | Optional ||
+| | Test | Optional ||     
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(M3) Production GPOs that include security settings must have the Owner, ReviewPeriod and LastReviewDate tags to schedule a security review.
 
 :exclamation: If an attribute Tag is not used, the Tag should have the value **NA**.   
