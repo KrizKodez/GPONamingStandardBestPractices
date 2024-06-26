@@ -1,3 +1,7 @@
+---
+title: GPO Best Practices
+---
+
 # GPO Best Practices
 Collection of rules for the creation and the handling of Active Directory Group Policy Objects.
 
