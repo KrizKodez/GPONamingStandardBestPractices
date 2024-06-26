@@ -1,9 +1,9 @@
 # GPO Naming Standard And Best Practices
 This is a try to define a naming standard for Active Directory Group Policy Objects and a collection of best practices for the usage of them.
 
-[GPO Best Practices](<Best Practices.md>)
+[GPO Best Practices](<https://github.com/KrizKodez/GPONamingStandardBestPractices/blob/main/Best Practices.md>)
 
-[GPO Naming Standard](<Naming Standard.md>)
+[GPO Naming Standard](<https://github.com/KrizKodez/GPONamingStandardBestPractices/blob/main/Naming Standard.md>)
 
 
 ## Motivation
