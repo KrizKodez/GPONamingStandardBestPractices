@@ -1,3 +1,5 @@
+![MSAD](https://img.shields.io/badge/Active_Directory_Domain_Services-blue) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-green)](https://www.gnu.org/licenses/gpl-3.0)
+
 # GPO Best Practices
 Collection of rules for the creation and the handling of Active Directory Group Policy Objects.
 
