@@ -1,3 +1,5 @@
+![MSAD](https://img.shields.io/badge/Active_Directory_Domain_Services-blue) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-green)](https://www.gnu.org/licenses/gpl-3.0)
+
 # GPO Naming Standard
 Definition of a naming standard for Active Directory Group Policy Objects.
 
